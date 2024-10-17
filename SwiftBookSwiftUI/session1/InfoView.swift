@@ -23,6 +23,7 @@ struct InfoView: View {
                     // the view to represent one row of data with image and title
                     InfoRowView(post: post)
                 }
+                
             }
             .navigationTitle("Путешестия")
             .listStyle(.plain)
