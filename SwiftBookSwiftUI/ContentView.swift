@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selectedView = 1
+    @AppStorage("titleOn") private var titleOn: Bool = false
     var body: some View {
         TabView (selection: $selectedView ) {
-            InfoView()
+            InfoView(titleOn: titleOn)
                 .tabItem {
                     Image(systemName: "1.circle")
                     Text("InfoView")
@@ -22,10 +23,10 @@ struct ContentView: View {
                     Image(systemName: "2.circle")
                     Text("Hello")
                 } .tag(2)
-            SettingsView()
+            SettingsView( titleOn: $titleOn)
                 .tabItem {
                     Image(systemName: "3.circle")
-                    Text("First")
+                    Text("Settings")
                 } .tag(1)        }
     }
     

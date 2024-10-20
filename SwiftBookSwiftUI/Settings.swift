@@ -7,24 +7,45 @@
 
 import Foundation
 import SwiftUI
+
 struct SettingsView: View {
-    @State private var colors = ["Red", "Blue", "Green", "Yellow", "Black"]
-    @State private var selectedColor = 1
-    @State private var additionalSettings = false
+    // read actual color scheme from the environment
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var selectedTheme = ColorTheme.Theme.default
+    
+    @Binding var titleOn: Bool
+   // @AppStorage("linkToAppOn") private var linkOn = false
+    @State private var toggler = false
+    
     var body: some View {
-        NavigationView {
-            Form {
-                Picker(selection: $selectedColor, label:
-                        Text("Select Color")) {
-                    ForEach(0..<colors.count) {
-                        Text(self.colors[$0])
+        Form {
+            
+            Section {
+                // presents current light / dark mode in iOS, connected dynamically
+                Text("Color theme appearance: ") +
+                Text("\(colorScheme == .dark ? "dark mode" : "light mode")").bold()
+                
+                Picker("Color theme", selection: $selectedTheme.animation()) {
+                    ForEach(ColorTheme.Theme.allCases, id: \.self) {
+                        Text($0.rawValue).tag($0)
                     }
                 }
-                Toggle(isOn: $additionalSettings) {
-                    Text("Additional settings")
+                .pickerStyle(.segmented)
+                
+            }
+            Section {
+                Toggle("Включить заголовок InfoView?", isOn: $titleOn)
+                    .padding()
+                if titleOn {
+                    Text("Navigation title enable")
+                        .padding()
                 }
-            } .navigationTitle("Settings")
+                }
+                
+                }
+            }
         }
-    }
-   
-}
+
+
+
