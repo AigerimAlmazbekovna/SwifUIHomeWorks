@@ -35,8 +35,11 @@ struct SettingsView: View {
                 
             }
             Section {
-                Toggle(isOn: $titleOn) {
-                    Text("Включить заголовок InfoView?")
+                Toggle("Включить заголовок InfoView?", isOn: $titleOn)
+                    .padding()
+                if titleOn {
+                    Text("Navigation title enable")
+                        .padding()
                 }
                 }
                 
