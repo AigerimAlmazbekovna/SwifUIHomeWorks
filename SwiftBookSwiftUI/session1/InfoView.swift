@@ -8,9 +8,13 @@
 import Foundation
 import SwiftUI
 
+import Foundation
+import SwiftUI
+
 import SwiftUI
 
 struct InfoView: View {
+    var titleOn: Bool
     var body: some View {
         // navigation view for master - details architecture
         NavigationView {
@@ -23,11 +27,10 @@ struct InfoView: View {
                     // the view to represent one row of data with image and title
                     InfoRowView(post: post)
                 }
+                
             }
-            .navigationTitle("Путешестия")
+            .navigationTitle(titleOn ? "Путешестия" : "")
             .listStyle(.plain)
         }
     }
 }
-
-
