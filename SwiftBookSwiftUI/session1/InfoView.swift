@@ -11,6 +11,7 @@ import SwiftUI
 import SwiftUI
 
 struct InfoView: View {
+    var titleOn: Bool
     var body: some View {
         // navigation view for master - details architecture
         NavigationView {
@@ -22,10 +23,12 @@ struct InfoView: View {
                 } label: {
                     // the view to represent one row of data with image and title
                     InfoRowView(post: post)
+                        
                 }
+                
             }
-            .navigationTitle("Путешестия")
-            .listStyle(.plain)
+            .navigationTitle(titleOn ? "Путешестия" : "")
+            .animation(.easeInOut, value: titleOn)
         }
     }
 }
