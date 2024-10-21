@@ -40,6 +40,7 @@ struct SettingsView: View {
                 if titleOn {
                     Text("Navigation title enable")
                         .padding()
+                        .transition(.opacity)
                 }
                 }
                 

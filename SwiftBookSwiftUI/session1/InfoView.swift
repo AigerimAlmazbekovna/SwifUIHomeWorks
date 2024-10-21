@@ -23,11 +23,12 @@ struct InfoView: View {
                 } label: {
                     // the view to represent one row of data with image and title
                     InfoRowView(post: post)
+                        
                 }
                 
             }
             .navigationTitle(titleOn ? "Путешестия" : "")
-            .listStyle(.plain)
+            .animation(.easeInOut, value: titleOn)
         }
     }
 }

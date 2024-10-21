@@ -17,6 +17,7 @@ struct ContentView: View {
                     Image(systemName: "1.circle")
                     Text("InfoView")
                 } .tag(1)
+                .transition(.slide)
             
             HelloView()
                 .tabItem {
