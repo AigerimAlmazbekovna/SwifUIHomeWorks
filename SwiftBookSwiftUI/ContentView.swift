@@ -22,7 +22,7 @@ struct ContentView: View {
             HelloView()
                 .tabItem {
                     Image(systemName: "2.circle")
-                    Text("Hello")
+                    Text("Карта")
                 } .tag(2)
             SettingsView( titleOn: $titleOn)
                 .tabItem {
